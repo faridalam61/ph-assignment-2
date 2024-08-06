@@ -12,4 +12,6 @@ router.get("/", product_controller_1.ProductController.GetAllProductController);
 router.get("/:productId", product_controller_1.ProductController.GetSingleProductController);
 // Update product
 router.put("/:productId", product_controller_1.ProductController.UpdateProductController);
+// Delete product
+router.delete("/:productId", product_controller_1.ProductController.DeleteProductController);
 exports.ProductRouter = router;

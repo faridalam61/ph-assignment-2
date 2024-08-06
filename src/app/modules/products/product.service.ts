@@ -41,9 +41,22 @@ const UpdateProductService = async (id: string, data: Product) => {
 		console.log(err);
 	}
 };
+
+// Delete a product
+
+const DeleteProductService = async (id: string) => {
+	try {
+		const result = await ProductModel.deleteOne({ _id: id });
+		return result;
+	} catch (err) {
+		console.log(err);
+	}
+};
+
 export const ProductService = {
 	CreateProductService,
 	GetAllProductsService,
 	GetSingleProductService,
 	UpdateProductService,
+	DeleteProductService,
 };

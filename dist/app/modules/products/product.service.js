@@ -51,9 +51,20 @@ const UpdateProductService = (id, data) => __awaiter(void 0, void 0, void 0, fun
         console.log(err);
     }
 });
+// Delete a product
+const DeleteProductService = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield product_model_1.ProductModel.deleteOne({ _id: id });
+        return result;
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
 exports.ProductService = {
     CreateProductService,
     GetAllProductsService,
     GetSingleProductService,
     UpdateProductService,
+    DeleteProductService,
 };

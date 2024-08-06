@@ -18,4 +18,7 @@ router.get("/:productId", ProductController.GetSingleProductController);
 // Update product
 router.put("/:productId", ProductController.UpdateProductController);
 
+// Delete product
+router.delete("/:productId", ProductController.DeleteProductController);
+
 export const ProductRouter = router;

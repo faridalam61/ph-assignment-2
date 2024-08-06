@@ -116,9 +116,38 @@ const UpdateProductController = async (req: Request, res: Response) => {
 	}
 };
 
+// Delete product controller
+
+const DeleteProductController = async (req: Request, res: Response) => {
+	try {
+		const { productId } = req.params;
+		const result = await ProductService.DeleteProductService(productId);
+
+		if (!result) {
+			return res.status(500).json({
+				success: false,
+				message: "Delete product failed!",
+			});
+		}
+
+		res.status(200).json({
+			success: true,
+			message: "Product deleted successfully!",
+			data: null,
+		});
+	} catch (err) {
+		console.log(err);
+		res.status(500).json({
+			success: false,
+			message: "Delete product failed!",
+		});
+	}
+};
+
 export const ProductController = {
 	CreateProductController,
 	GetAllProductController,
 	GetSingleProductController,
 	UpdateProductController,
+	DeleteProductController,
 };
