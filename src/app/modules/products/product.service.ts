@@ -20,7 +20,19 @@ const GetAllProductsService = async () => {
 		console.log(err);
 	}
 };
+
+// Get Single product from database
+const GetSingleProductService = async (id: string) => {
+	try {
+		const result = await ProductModel.findById(id);
+		return result;
+	} catch (err) {
+		console.log(err);
+	}
+};
+
 export const ProductService = {
 	CreateProductService,
 	GetAllProductsService,
+	GetSingleProductService,
 };

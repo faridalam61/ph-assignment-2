@@ -61,7 +61,33 @@ const GetAllProductController = (req, res) => __awaiter(void 0, void 0, void 0, 
         });
     }
 });
+// Get single product from db
+const GetSingleProductController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { productId } = req.params;
+        const result = yield product_service_1.ProductService.GetSingleProductService(productId);
+        if (!result) {
+            return res.status(500).json({
+                success: false,
+                message: "Product fetching failed!",
+            });
+        }
+        res.status(200).json({
+            success: true,
+            message: "Product fetched successfully!",
+            data: result,
+        });
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            message: "Product fetching failed!",
+        });
+    }
+});
 exports.ProductController = {
     CreateProductController,
     GetAllProductController,
+    GetSingleProductController,
 };

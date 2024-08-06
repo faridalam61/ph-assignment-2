@@ -11,4 +11,8 @@ router.post("/", ProductController.CreateProductController);
 
 router.get("/", ProductController.GetAllProductController);
 
+// Get single product by id
+
+router.get("/:productId", ProductController.GetSingleProductController);
+
 export const ProductRouter = router;
