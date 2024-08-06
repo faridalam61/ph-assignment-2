@@ -53,10 +53,22 @@ const DeleteProductService = async (id: string) => {
 	}
 };
 
+// Search product
+
+const SearchProductService = async (query: string) => {
+	try {
+		const result = await ProductModel.find({ name: query });
+		return result;
+	} catch (err) {
+		console.log(err);
+	}
+};
+
 export const ProductService = {
 	CreateProductService,
 	GetAllProductsService,
 	GetSingleProductService,
 	UpdateProductService,
 	DeleteProductService,
+	SearchProductService,
 };

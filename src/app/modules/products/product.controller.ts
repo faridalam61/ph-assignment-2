@@ -144,10 +144,41 @@ const DeleteProductController = async (req: Request, res: Response) => {
 	}
 };
 
+// search product
+
+const SearchProductController = async (req: Request, res: Response) => {
+	try {
+		const { searchTerm } = req.query;
+		const result = await ProductService.SearchProductService(
+			searchTerm as string
+		);
+
+		if (!result) {
+			return res.status(500).json({
+				success: false,
+				message: "Delete product failed!",
+			});
+		}
+
+		res.status(200).json({
+			success: true,
+			message: "Product deleted successfully!",
+			data: null,
+		});
+	} catch (err) {
+		console.log(err);
+		res.status(500).json({
+			success: false,
+			message: "Delete product failed!",
+		});
+	}
+};
+
 export const ProductController = {
 	CreateProductController,
 	GetAllProductController,
 	GetSingleProductController,
 	UpdateProductController,
 	DeleteProductController,
+	SearchProductController,
 };

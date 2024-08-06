@@ -137,10 +137,36 @@ const DeleteProductController = (req, res) => __awaiter(void 0, void 0, void 0, 
         });
     }
 });
+// search product
+const SearchProductController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { searchTerm } = req.query;
+        const result = yield product_service_1.ProductService.SearchProductService(searchTerm);
+        if (!result) {
+            return res.status(500).json({
+                success: false,
+                message: "Delete product failed!",
+            });
+        }
+        res.status(200).json({
+            success: true,
+            message: "Product deleted successfully!",
+            data: null,
+        });
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            message: "Delete product failed!",
+        });
+    }
+});
 exports.ProductController = {
     CreateProductController,
     GetAllProductController,
     GetSingleProductController,
     UpdateProductController,
     DeleteProductController,
+    SearchProductController,
 };

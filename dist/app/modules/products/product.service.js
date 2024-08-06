@@ -61,10 +61,21 @@ const DeleteProductService = (id) => __awaiter(void 0, void 0, void 0, function*
         console.log(err);
     }
 });
+// Search product
+const SearchProductService = (query) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield product_model_1.ProductModel.find({ name: query });
+        return result;
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
 exports.ProductService = {
     CreateProductService,
     GetAllProductsService,
     GetSingleProductService,
     UpdateProductService,
     DeleteProductService,
+    SearchProductService,
 };
