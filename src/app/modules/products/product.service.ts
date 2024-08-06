@@ -31,8 +31,19 @@ const GetSingleProductService = async (id: string) => {
 	}
 };
 
+// Update product
+
+const UpdateProductService = async (id: string, data: Product) => {
+	try {
+		const result = await ProductModel.updateOne({ _id: id }, { $set: data });
+		return result;
+	} catch (err) {
+		console.log(err);
+	}
+};
 export const ProductService = {
 	CreateProductService,
 	GetAllProductsService,
 	GetSingleProductService,
+	UpdateProductService,
 };

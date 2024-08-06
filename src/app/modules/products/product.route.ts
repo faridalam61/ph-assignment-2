@@ -15,4 +15,7 @@ router.get("/", ProductController.GetAllProductController);
 
 router.get("/:productId", ProductController.GetSingleProductController);
 
+// Update product
+router.put("/:productId", ProductController.UpdateProductController);
+
 export const ProductRouter = router;

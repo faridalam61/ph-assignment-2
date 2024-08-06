@@ -86,8 +86,35 @@ const GetSingleProductController = (req, res) => __awaiter(void 0, void 0, void 
         });
     }
 });
+// Update product controller
+const UpdateProductController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { productId } = req.params;
+        const product = req.body;
+        const result = yield product_service_1.ProductService.UpdateProductService(productId, product);
+        if (!result) {
+            return res.status(500).json({
+                success: false,
+                message: "Product update failed!",
+            });
+        }
+        res.status(200).json({
+            success: true,
+            message: "Product updated successfully!",
+            data: result,
+        });
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            message: "Product update failed!",
+        });
+    }
+});
 exports.ProductController = {
     CreateProductController,
     GetAllProductController,
     GetSingleProductController,
+    UpdateProductController,
 };

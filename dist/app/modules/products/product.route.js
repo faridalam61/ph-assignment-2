@@ -10,4 +10,6 @@ router.post("/", product_controller_1.ProductController.CreateProductController)
 router.get("/", product_controller_1.ProductController.GetAllProductController);
 // Get single product by id
 router.get("/:productId", product_controller_1.ProductController.GetSingleProductController);
+// Update product
+router.put("/:productId", product_controller_1.ProductController.UpdateProductController);
 exports.ProductRouter = router;

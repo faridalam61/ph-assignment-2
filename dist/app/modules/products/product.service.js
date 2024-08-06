@@ -41,8 +41,19 @@ const GetSingleProductService = (id) => __awaiter(void 0, void 0, void 0, functi
         console.log(err);
     }
 });
+// Update product
+const UpdateProductService = (id, data) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield product_model_1.ProductModel.updateOne({ _id: id }, { $set: data });
+        return result;
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
 exports.ProductService = {
     CreateProductService,
     GetAllProductsService,
     GetSingleProductService,
+    UpdateProductService,
 };
