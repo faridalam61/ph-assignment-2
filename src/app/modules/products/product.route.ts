@@ -7,4 +7,8 @@ const router = Router();
 
 router.post("/", ProductController.CreateProductController);
 
+// Get All Products from DB
+
+router.get("/", ProductController.GetAllProductController);
+
 export const ProductRouter = router;

@@ -16,7 +16,7 @@ const productSchema = new Schema<Product>({
 	price: { type: Number, required: true },
 	category: { type: String, required: true },
 	tags: [{ type: String }],
-	variants: variantSchema,
+	variants: [variantSchema],
 	inventory: inventorySchema,
 });
 

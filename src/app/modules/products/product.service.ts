@@ -11,6 +11,16 @@ const CreateProductService = async (product: Product) => {
 	}
 };
 
+// Get all products from database
+const GetAllProductsService = async () => {
+	try {
+		const result = await ProductModel.find();
+		return result;
+	} catch (err) {
+		console.log(err);
+	}
+};
 export const ProductService = {
 	CreateProductService,
+	GetAllProductsService,
 };
