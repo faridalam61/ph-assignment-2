@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { orderValidationSchema } from "./order.validation";
 import { OrderService } from "./order.service";
+import { string } from "zod";
 
 // Create order controller
 const CreateOrderController = async (req: Request, res: Response) => {
@@ -28,7 +29,9 @@ const CreateOrderController = async (req: Request, res: Response) => {
 
 const GetAllOrderController = async (req: Request, res: Response) => {
 	try {
-		const result = await OrderService.GetAllOrdersService();
+		const filter = req.query.email;
+
+		const result = await OrderService.GetAllOrdersService(filter);
 
 		if (!result) {
 			res.status(500).json({

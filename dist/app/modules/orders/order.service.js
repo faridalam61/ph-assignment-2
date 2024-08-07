@@ -22,8 +22,12 @@ const CreateOrderService = (order) => __awaiter(void 0, void 0, void 0, function
     }
 });
 // Get all orders
-const GetAllOrdersService = () => __awaiter(void 0, void 0, void 0, function* () {
+const GetAllOrdersService = (filter) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        if (filter) {
+            const result = yield order_model_1.OrderModel.find({ email: filter });
+            return result;
+        }
         const result = yield order_model_1.OrderModel.find();
         return result;
     }

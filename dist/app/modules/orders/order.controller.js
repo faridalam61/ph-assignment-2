@@ -36,7 +36,8 @@ const CreateOrderController = (req, res) => __awaiter(void 0, void 0, void 0, fu
 // Get All orders controller
 const GetAllOrderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield order_service_1.OrderService.GetAllOrdersService();
+        const filter = req.query.email;
+        const result = yield order_service_1.OrderService.GetAllOrdersService(filter);
         if (!result) {
             res.status(500).json({
                 success: false,

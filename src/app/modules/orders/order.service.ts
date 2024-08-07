@@ -12,8 +12,12 @@ const CreateOrderService = async (order: Order) => {
 };
 
 // Get all orders
-const GetAllOrdersService = async () => {
+const GetAllOrdersService = async (filter: any) => {
 	try {
+		if (filter) {
+			const result = await OrderModel.find({ email: filter });
+			return result;
+		}
 		const result = await OrderModel.find();
 		return result;
 	} catch (err) {

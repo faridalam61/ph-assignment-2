@@ -12,8 +12,14 @@ const CreateProductService = async (product: Product) => {
 };
 
 // Get all products from database
-const GetAllProductsService = async () => {
+const GetAllProductsService = async (filter: any) => {
 	try {
+		if (filter) {
+			const result = await ProductModel.find({
+				name: { $regex: filter, $options: "i" },
+			});
+			return result;
+		}
 		const result = await ProductModel.find();
 		return result;
 	} catch (err) {
@@ -53,22 +59,10 @@ const DeleteProductService = async (id: string) => {
 	}
 };
 
-// Search product
-
-const SearchProductService = async (query: string) => {
-	try {
-		const result = await ProductModel.find({ name: query });
-		return result;
-	} catch (err) {
-		console.log(err);
-	}
-};
-
 export const ProductService = {
 	CreateProductService,
 	GetAllProductsService,
 	GetSingleProductService,
 	UpdateProductService,
 	DeleteProductService,
-	SearchProductService,
 };

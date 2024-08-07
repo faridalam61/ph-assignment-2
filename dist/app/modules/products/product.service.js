@@ -22,8 +22,14 @@ const CreateProductService = (product) => __awaiter(void 0, void 0, void 0, func
     }
 });
 // Get all products from database
-const GetAllProductsService = () => __awaiter(void 0, void 0, void 0, function* () {
+const GetAllProductsService = (filter) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        if (filter) {
+            const result = yield product_model_1.ProductModel.find({
+                name: { $regex: filter, $options: "i" },
+            });
+            return result;
+        }
         const result = yield product_model_1.ProductModel.find();
         return result;
     }
@@ -61,21 +67,10 @@ const DeleteProductService = (id) => __awaiter(void 0, void 0, void 0, function*
         console.log(err);
     }
 });
-// Search product
-const SearchProductService = (query) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const result = yield product_model_1.ProductModel.find({ name: query });
-        return result;
-    }
-    catch (err) {
-        console.log(err);
-    }
-});
 exports.ProductService = {
     CreateProductService,
     GetAllProductsService,
     GetSingleProductService,
     UpdateProductService,
     DeleteProductService,
-    SearchProductService,
 };
