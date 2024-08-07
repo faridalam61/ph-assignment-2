@@ -12,7 +12,7 @@ A simple RESTful API built with Express, Mongoose, and TypeScript.
 3. Create a `.env` file with the following variables:
    - `DB_URL`: your MongoDB connection string
    - `PORT`: the port number to run the server on (default: 3000)
-4. Run the server: `npm run star:dev`
+4. Run the server: `npm run start:dev`
 
 ### Technologies Used
 
