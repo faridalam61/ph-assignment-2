@@ -11,6 +11,17 @@ const CreateOrderService = async (order: Order) => {
 	}
 };
 
+// Get all orders
+const GetAllOrdersService = async () => {
+	try {
+		const result = await OrderModel.find();
+		return result;
+	} catch (err) {
+		console.log(err);
+	}
+};
+
 export const OrderService = {
 	CreateOrderService,
+	GetAllOrdersService,
 };

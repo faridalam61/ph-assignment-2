@@ -20,12 +20,32 @@ const CreateOrderController = (req, res) => __awaiter(void 0, void 0, void 0, fu
         if (!result) {
             res.status(500).json({
                 success: false,
-                message: "Failed to create product",
+                message: "Failed to create order",
             });
         }
         res.status(200).json({
             success: true,
-            message: "Failed to create product",
+            message: "Order created successfully!",
+            data: result,
+        });
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
+// Get All orders controller
+const GetAllOrderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield order_service_1.OrderService.GetAllOrdersService();
+        if (!result) {
+            res.status(500).json({
+                success: false,
+                message: "Error fetching orders!",
+            });
+        }
+        res.status(200).json({
+            success: true,
+            message: "Orders fetched successfully!",
             data: result,
         });
     }
@@ -35,4 +55,5 @@ const CreateOrderController = (req, res) => __awaiter(void 0, void 0, void 0, fu
 });
 exports.OrderController = {
     CreateOrderController,
+    GetAllOrderController,
 };

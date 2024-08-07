@@ -11,12 +11,34 @@ const CreateOrderController = async (req: Request, res: Response) => {
 		if (!result) {
 			res.status(500).json({
 				success: false,
-				message: "Failed to create product",
+				message: "Failed to create order",
 			});
 		}
 		res.status(200).json({
 			success: true,
-			message: "Failed to create product",
+			message: "Order created successfully!",
+			data: result,
+		});
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+// Get All orders controller
+
+const GetAllOrderController = async (req: Request, res: Response) => {
+	try {
+		const result = await OrderService.GetAllOrdersService();
+
+		if (!result) {
+			res.status(500).json({
+				success: false,
+				message: "Error fetching orders!",
+			});
+		}
+		res.status(200).json({
+			success: true,
+			message: "Orders fetched successfully!",
 			data: result,
 		});
 	} catch (err) {
@@ -26,4 +48,5 @@ const CreateOrderController = async (req: Request, res: Response) => {
 
 export const OrderController = {
 	CreateOrderController,
+	GetAllOrderController,
 };

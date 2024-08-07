@@ -21,6 +21,17 @@ const CreateOrderService = (order) => __awaiter(void 0, void 0, void 0, function
         console.log(err);
     }
 });
+// Get all orders
+const GetAllOrdersService = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield order_model_1.OrderModel.find();
+        return result;
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
 exports.OrderService = {
     CreateOrderService,
+    GetAllOrdersService,
 };
