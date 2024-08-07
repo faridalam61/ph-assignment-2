@@ -2,9 +2,8 @@ A simple RESTful API built with Express, Mongoose, and TypeScript.
 
 ### Prerequisites
 
-- Node.js (version 14 or higher)
-- npm (version 6 or higher)
-- MongoDB (version 4 or higher)
+- Node.js (version 20 or higher)
+- npm (version 10 or higher)
 
 ### Installation
 
